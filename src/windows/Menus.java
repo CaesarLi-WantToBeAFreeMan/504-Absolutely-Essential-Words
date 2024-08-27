@@ -1,0 +1,125 @@
+package windows;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.KeyEvent;
+
+import data.User;
+
+public class Menus {
+	private User user = new User();
+	Menus(JFrame frame){
+		//menus
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBackground(new Color(54, 43, 42));
+		frame.setJMenuBar(menuBar);
+		
+		//file menu
+		JMenu fileMenu = new JMenu("File");
+		fileMenu.setForeground(new Color(227, 204, 202));
+		fileMenu.setFont(new Font("Arial", Font.PLAIN, 15));
+		fileMenu.setMnemonic(KeyEvent.VK_F);
+		menuBar.add(fileMenu);
+		
+		//exit menu item
+		JMenuItem exitItem = new JMenuItem("Exit");
+		exitItem.setBackground(new Color(54, 43, 42));
+		exitItem.setForeground(new Color(227, 204, 202));
+		exitItem.setFont(new Font("Arial", Font.PLAIN, 15));
+		exitItem.setMnemonic(KeyEvent.VK_E);
+		exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK));
+		exitItem.addActionListener(e ->	System.exit(0));
+		fileMenu.add(exitItem);
+		
+		//add a separator
+		fileMenu.addSeparator();
+		
+		//reset data item
+		JMenuItem resetDataItem = new JMenuItem("Reset Data");
+		resetDataItem.setBackground(new Color(54, 43, 42));
+		resetDataItem.setForeground(new Color(227, 204, 202));
+		resetDataItem.setFont(new Font("Arial", Font.PLAIN, 15));
+		resetDataItem.setMnemonic(KeyEvent.VK_R);
+		resetDataItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, KeyEvent.CTRL_DOWN_MASK));
+		resetDataItem.addActionListener(e -> {
+			String [] options = {"Confirm", "Wait"};
+			int choice = JOptionPane.showOptionDialog(frame,
+							"Do You Want To Restart This Programe To Reset Data",
+							"RESTART",
+							JOptionPane.OK_CANCEL_OPTION,
+							JOptionPane.QUESTION_MESSAGE,
+							null,
+							options,
+							options [0]);
+			if(choice == JOptionPane.OK_OPTION) {
+				user.resetData();
+				frame.dispose();
+				Main.restart();
+			}
+		});
+		fileMenu.add(resetDataItem);
+		
+		//view menu
+		JMenu viewMenu = new JMenu("View");
+		viewMenu.setForeground(new Color(227, 204, 202));
+		viewMenu.setFont(new Font("Arial", Font.PLAIN, 15));
+		viewMenu.setMnemonic(KeyEvent.VK_V);
+		menuBar.add(viewMenu);
+		
+		//view lesson outline item
+		JMenuItem outlineItem = new JMenuItem("Outline...");
+		outlineItem.setBackground(new Color(54, 43, 42));
+		outlineItem.setForeground(new Color(227, 204, 202));
+		outlineItem.setFont(new Font("Arial", Font.PLAIN, 15));
+		outlineItem.setMnemonic(KeyEvent.VK_O);
+		outlineItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
+		outlineItem.addActionListener(e -> new ViewOutlineWindow());
+		viewMenu.add(outlineItem);
+		
+		//add a separator
+		viewMenu.addSeparator();
+		
+		//view learned words item
+		JMenuItem learnedWordsItem = new JMenuItem("Learned Words...");
+		learnedWordsItem.setBackground(new Color(54, 43, 42));
+		learnedWordsItem.setForeground(new Color(227, 204, 202));
+		learnedWordsItem.setFont(new Font("Arial", Font.PLAIN, 15));
+		learnedWordsItem.setMnemonic(KeyEvent.VK_L);
+		learnedWordsItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, KeyEvent.CTRL_DOWN_MASK));
+		learnedWordsItem.addActionListener(e -> new ViewLearnedWordsWindow());
+		viewMenu.add(learnedWordsItem);
+		
+		//view tested words item
+		JMenuItem testedWordsItem = new JMenuItem("Tested Words...");
+		testedWordsItem.setBackground(new Color(54, 43, 42));
+		testedWordsItem.setForeground(new Color(227, 204, 202));
+		testedWordsItem.setFont(new Font("Arial", Font.PLAIN, 15));
+		testedWordsItem.setMnemonic(KeyEvent.VK_T);
+		testedWordsItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.CTRL_DOWN_MASK));
+		testedWordsItem.addActionListener(e -> new ViewTestedWordsWindow());
+		viewMenu.add(testedWordsItem);
+		
+		//about menu
+		JMenu aboutMenu = new JMenu("About");
+		aboutMenu.setForeground(new Color(227, 204, 202));
+		aboutMenu.setFont(new Font("Arial", Font.PLAIN, 15));
+		aboutMenu.setMnemonic(KeyEvent.VK_A);
+		menuBar.add(aboutMenu);
+		
+		JMenuItem aboutItem = new JMenuItem("About...");
+		aboutItem.setBackground(new Color(54, 43, 42));
+		aboutItem.setForeground(new Color(227, 204, 202));
+		aboutItem.setFont(new Font("Arial", Font.PLAIN, 15));
+		aboutItem.setMnemonic(KeyEvent.VK_A);
+		aboutItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK));
+		aboutItem.addActionListener(e -> new AboutWindow());
+		aboutMenu.add(aboutItem);
+	}
+}
