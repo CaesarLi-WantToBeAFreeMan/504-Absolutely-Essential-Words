@@ -22,8 +22,6 @@ public class HomeWindow extends JFrame{
 	private Menus menu = new Menus(this);
 	
 	public HomeWindow() {
-		//type something to make differences
-		
 		this.setSize(1200, 700);
 		this.getContentPane().setBackground(Color.BLACK);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

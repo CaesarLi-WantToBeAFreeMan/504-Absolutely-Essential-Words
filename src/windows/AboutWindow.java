@@ -83,7 +83,7 @@ public class AboutWindow extends JFrame{
 		//draw URL
 		g2d.setColor(new Color(80, 242, 212));
 		g2d.setFont(new Font("Arial", Font.BOLD, 21));
-		g2d.drawString("WRITE URL HERE", 50, 600);
+		g2d.drawString("https://github.com/CaesarLi-WantToBeAFreeMan/504-Absolutely-Essential-Words", 50, 600);
 		
 	}
 }
