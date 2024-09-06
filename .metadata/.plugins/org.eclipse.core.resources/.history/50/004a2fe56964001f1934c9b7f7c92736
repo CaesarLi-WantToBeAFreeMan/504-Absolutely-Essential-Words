@@ -1,0 +1,396 @@
+package windows;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.ImageIcon;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Dimension;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import java.util.ArrayList;
+
+import data.User;
+import data.WordInfo;
+import data.QuestionsNAnswers;
+
+public class TestWindow extends JFrame{
+	private WordInfo info = new WordInfo();
+	private User user = new User();
+	private QuestionsNAnswers qNA = new QuestionsNAnswers();
+	
+	private JPanel showArea = new JPanel();
+	private int position = 0, model = 0, tryTimes = 0, testedNumber = 0;
+	private JButton spellButton = new JButton("spell"),
+					fillInTheBlankButton = new JButton("fill in the blank"),
+					matchButton = new JButton("match"),
+					nextButton = new JButton("next");
+	
+	//first row means spell
+	//second row means fill in the blank
+	//third row means match
+	private boolean [] [] questionStatus = new boolean [3] [12];
+	
+	private JLabel 	modelInfo = new JLabel("spell"),
+					positionText = new JLabel("1");
+	
+	TestWindow(int lesson){
+		//initialize data
+		user.load();
+		questionStatus [0] = user.getLessonWordSpellStatus(lesson);
+		questionStatus [1] = user.getLessonWordFillInTheBlankStatus(lesson);
+		questionStatus [2] = user.getLessonWordMatchStatus(lesson);
+		countTestedNumber();
+		
+		this.setSize(1000, 700);
+		this.getContentPane().setBackground(Color.BLACK);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setTitle("Test Lesson #" + Integer.toString(lesson + 1));
+		ImageIcon learnIcon = new ImageIcon("icons/learn.png");
+		this.setIconImage(learnIcon.getImage());
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
+		new Menus(this);
+		
+		//title container
+		JPanel titleContainer = new JPanel();
+		titleContainer.setOpaque(false);
+		titleContainer.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 0));
+		this.add(titleContainer, BorderLayout.NORTH);
+		
+		//title icon
+		JLabel titleIcon = new JLabel(Integer.toString(lesson + 1));
+		titleIcon.setForeground(new Color(0, 255, 255));
+		titleIcon.setFont(new Font("Algerian", Font.BOLD, 70));
+		titleContainer.add(titleIcon);
+		
+		//title text
+		JLabel titleText = new JLabel("Test lesson #" + Integer.toString(lesson + 1) + " Vocabulary");
+		titleText.setForeground(new Color(0, 255, 255));
+		titleText.setFont(new Font("Arial", Font.BOLD, 50));
+		titleContainer.add(titleText);
+		
+		//progress bar
+		JProgressBar progressBar = new JProgressBar(0, 36);
+		progressBar.setBackground(new Color(26, 237, 44));
+		progressBar.setForeground(new Color(9, 83, 222));
+		progressBar.setFont(new Font("Algerian", Font.BOLD, 18));
+		progressBar.setStringPainted(true);
+		progressBar.setBorderPainted(true);
+		progressBar.setValue(testedNumber);
+		this.add(progressBar, BorderLayout.SOUTH);
+		
+		//show area
+		showArea.setBackground(new Color(3, 7, 110));
+		showArea.setLayout(new BorderLayout(10, 10));
+		this.add(showArea, BorderLayout.CENTER);
+		
+		//Q & A area
+		JPanel QAArea = new JPanel();
+		QAArea.setOpaque(false);
+		QAArea.setLayout(new BorderLayout(5, 5));
+		showArea.add(QAArea, BorderLayout.NORTH);
+		
+		//question area
+		JPanel questionArea = new JPanel();
+		questionArea.setOpaque(false);
+		questionArea.setLayout(new BorderLayout(10, 10));
+		questionArea.setPreferredSize(new Dimension(1000, 310));
+		QAArea.add(questionArea, BorderLayout.NORTH);
+		
+		//show question area
+		JTextArea questionShowArea = new JTextArea();
+		questionShowArea.setOpaque(false);
+		questionShowArea.setForeground(new Color(5, 149, 245));
+		questionShowArea.setFont(new Font("Arial", Font.BOLD, 50));
+		questionShowArea.setText(info.getPhoneticSymbol(lesson, position));
+		questionShowArea.setLineWrap(true);
+		questionShowArea.setWrapStyleWord(true);
+		questionShowArea.setEditable(false);
+		questionShowArea.setCaretColor(new Color(3, 7, 110));
+		questionShowArea.setSelectionColor(new Color(3, 7, 110));
+		questionShowArea.setSelectedTextColor(new Color(5, 149, 245));
+		questionArea.add(questionShowArea, BorderLayout.NORTH);
+		
+		//answer area
+		JPanel answerArea = new JPanel();
+		answerArea.setOpaque(false);
+		answerArea.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 10));
+		QAArea.add(answerArea, BorderLayout.SOUTH);
+		
+		//type answer
+		JTextField answer = new JTextField("Please type here");
+		answer.setBackground(Color.BLACK);
+		answer.setForeground(new Color(232, 176, 97));
+		answer.setFont(new Font("Arial", Font.PLAIN, 39));
+		answer.setPreferredSize(new Dimension(500, 50));
+		answer.setCaretColor(new Color(5, 149, 245));
+		answer.selectAll();
+		answerArea.add(answer);
+		
+		//check answer button
+		JButton checkButton = new JButton("check");
+		checkButton.setBackground(new Color(242, 199, 138));
+		checkButton.setForeground(new Color(52, 173, 74));
+		checkButton.setFont(new Font("Cooper Black", Font.BOLD, 39));
+		checkButton.setFocusable(false);
+		answerArea.add(checkButton);
+		checkButton.addActionListener(e -> {
+			if(model == 0) {
+				if(answer.getText().equals(info.getWord(lesson, position))) {
+					if(!questionStatus [model] [position])
+						progressBar.setValue(++testedNumber);
+					
+					questionStatus [model] [position] = true;
+					JOptionPane.showMessageDialog(	this, "Your answer is correct!!!\nPlease test next word",
+													"CONGRATULATIONS!!!", JOptionPane.INFORMATION_MESSAGE);
+					nextButton.setEnabled(true);
+					fillInTheBlankButton.setEnabled(check());
+					tryTimes = 0;
+				} else {
+					if(tryTimes < 3)
+						JOptionPane.showMessageDialog(	this, "Your answer is wrong!!!\nPlease try again",
+														"WRONG ANSWER!!!", JOptionPane.ERROR_MESSAGE);
+					else
+						JOptionPane.showMessageDialog(	this, "You have tried more than three times and failed!\nThe correct answer is " + info.getWord(lesson, position) + "\nAnd please try again!",
+														"MORE THAN THREE WRONG ANSWERS!!!", JOptionPane.WARNING_MESSAGE);
+					answer.setText("Try Again");
+					tryTimes++;
+				}
+			} else if(model == 1) {
+				String originalAnswer = qNA.getAnswer(lesson, position), userAnswer = answer.getText();
+				ArrayList <String> answers = new ArrayList <String>();
+				if(originalAnswer.contains("||")) {
+					int startPosition = 0;
+					for(int endPosition; (endPosition = originalAnswer.indexOf("||", startPosition)) != -1; startPosition = endPosition + 2)
+						answers.add(originalAnswer.substring(startPosition, endPosition));
+					answers.add(originalAnswer.substring(startPosition));
+				}
+				else
+					answers.add(originalAnswer);
+				if(checkAnswer(answers, userAnswer)) {
+					if(!questionStatus [model] [position])
+						progressBar.setValue(++testedNumber);
+					
+					questionStatus [model] [position] = true;
+					JOptionPane.showMessageDialog(	this, "Your answer is correct!!!\nPlease test next word",
+													"CONGRATULATIONS!!!", JOptionPane.INFORMATION_MESSAGE);
+					nextButton.setEnabled(true);
+					matchButton.setEnabled(check());
+					tryTimes = 0;
+				} else {
+					if(tryTimes < 3)
+						JOptionPane.showMessageDialog(	this, "Your answer is wrong!!!\nPlease try again",
+														"WRONG ANSWER!!!", JOptionPane.ERROR_MESSAGE);
+					else
+						JOptionPane.showMessageDialog(	this, "You have tried more than three times and failed!\nThe correct answer is " + qNA.getAnswer(lesson, position) + "\nAnd please try again!",
+														"MORE THAN THREE WRONG ANSWERS!!!", JOptionPane.WARNING_MESSAGE);
+					answer.setText("Try Again");
+					tryTimes++;
+				}
+			} else {
+				if(answer.getText().equals(info.getWord(lesson, position))) {
+					if(!questionStatus [model] [position])
+						progressBar.setValue(++testedNumber);
+					
+					questionStatus [model] [position] = true;
+					JOptionPane.showMessageDialog(	this, "Your answer is correct!!!\nPlease test next word",
+													"CONGRATULATIONS!!!", JOptionPane.INFORMATION_MESSAGE);
+					nextButton.setEnabled(true);
+					tryTimes = 0;
+				} else {
+					if(tryTimes < 3)
+						JOptionPane.showMessageDialog(	this, "Your answer is wrong!!!\nPlease try again",
+														"WRONG ANSWER!!!", JOptionPane.ERROR_MESSAGE);
+					else
+						JOptionPane.showMessageDialog(	this, "You have tried more than three times and failed!\nThe correct answer is " + info.getWord(lesson, position) + "\nAnd please try again!",
+														"MORE THAN THREE WRONG ANSWERS!!!", JOptionPane.WARNING_MESSAGE);
+					answer.setText("Try Again");
+					tryTimes++;
+				}
+			}
+			answer.selectAll();
+		});
+		
+		//question status bar
+		JPanel questionStatusContainer = new JPanel();
+		questionStatusContainer.setOpaque(false);
+		questionStatusContainer.setLayout(new FlowLayout(FlowLayout.TRAILING, 210, 10));
+		showArea.add(questionStatusContainer, BorderLayout.CENTER);
+		
+		//model info
+		modelInfo.setForeground(new Color(230, 230, 230));
+		modelInfo.setFont(new Font("Candara", Font.PLAIN, 21));
+		questionStatusContainer.add(modelInfo);
+		
+		//next button
+		nextButton.setBackground(new Color(138, 72, 3));
+		nextButton.setForeground(new Color(107, 227, 135));
+		nextButton.setFont(new Font("Cooper Black", Font.PLAIN, 18));
+		nextButton.setFocusable(false);
+		nextButton.setEnabled(questionStatus [model] [position]);
+		questionStatusContainer.add(nextButton);
+		nextButton.addActionListener(e -> {
+			position = (position + 1) % 12;
+			nextButton.setEnabled(questionStatus [model] [position] ? true : false);
+			positionText.setText(Integer.toString(position + 1));
+			questionShowArea.setText(	model == 0 ? info.getPhoneticSymbol(lesson, position) : 
+										model == 1 ? qNA.getQuestion(lesson, position) : info.getEnglishMeaning(lesson, position));
+			answer.setText("Please type here");
+			answer.selectAll();
+		});
+		
+		//position container
+		JPanel positionContainer = new JPanel();
+		positionContainer.setOpaque(false);
+		positionContainer.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		questionStatusContainer.add(positionContainer);
+		
+		//position text
+		positionText.setForeground(new Color(230, 230, 230));
+		positionText.setFont(new Font("Candara", Font.PLAIN, 21));
+		positionContainer.add(positionText);
+		
+		//total word number text
+		JLabel totalWordNumberText = new JLabel(" / 12");
+		totalWordNumberText.setForeground(new Color(230, 230, 230));
+		totalWordNumberText.setFont(new Font("Candara", Font.PLAIN, 21));
+		positionContainer.add(totalWordNumberText);
+		
+		//buttons container
+		JPanel buttonContainer = new JPanel();
+		buttonContainer.setBackground(new Color(86, 86, 232));
+		buttonContainer.setLayout(new FlowLayout(FlowLayout.CENTER, 200, 10));
+		showArea.add(buttonContainer, BorderLayout.SOUTH);
+		
+		//spell button
+		spellButton.setBackground(new Color(153, 189, 38));
+		spellButton.setForeground(new Color(0, 255, 255));
+		spellButton.setFont(new Font("Candara Light", Font.BOLD, 18));
+		spellButton.setFocusable(false);
+		spellButton.addActionListener(e -> {
+			spellButton.setBackground(new Color(153, 189, 38));
+			fillInTheBlankButton.setBackground(Color.BLACK);
+			matchButton.setBackground(Color.BLACK);
+			modelInfo.setText("spell");
+			model = 0;
+			position = 0;
+			tryTimes = 0;
+			questionShowArea.setText(info.getPhoneticSymbol(lesson, position));
+			answer.setText("Please type here");
+			answer.selectAll();
+			positionText.setText(Integer.toString(position + 1));
+			nextButton.setEnabled(questionStatus [0] [0]);
+		});
+		buttonContainer.add(spellButton);
+		
+		//fill in the blank button
+		fillInTheBlankButton.setBackground(Color.BLACK);
+		fillInTheBlankButton.setForeground(new Color(0, 255, 255));
+		fillInTheBlankButton.setFont(new Font("Candara Light", Font.BOLD, 18));
+		fillInTheBlankButton.setFocusable(false);
+		fillInTheBlankButton.setEnabled(check(0));
+		fillInTheBlankButton.addActionListener(e -> {
+			spellButton.setBackground(Color.BLACK);
+			fillInTheBlankButton.setBackground(new Color(153, 189, 38));
+			matchButton.setBackground(Color.BLACK);
+			modelInfo.setText("fill in the blank");
+			model = 1;
+			position = 0;
+			tryTimes = 0;
+			questionShowArea.setText(qNA.getQuestion(lesson, position));
+			answer.setText("Please type here");
+			answer.selectAll();
+			positionText.setText(Integer.toString(position + 1));
+			nextButton.setEnabled(questionStatus [1] [0]);
+		});
+		buttonContainer.add(fillInTheBlankButton);
+		
+		//match button
+		matchButton.setBackground(Color.BLACK);
+		matchButton.setForeground(new Color(0, 255, 255));
+		matchButton.setFont(new Font("Candara Light", Font.BOLD, 18));
+		matchButton.setFocusable(false);
+		matchButton.setEnabled(check(1));
+		matchButton.addActionListener(e -> {
+			spellButton.setBackground(Color.BLACK);
+			fillInTheBlankButton.setBackground(Color.BLACK);
+			matchButton.setBackground(new Color(153, 189, 38));
+			modelInfo.setText("match");
+			model = 2;
+			position = 0;
+			tryTimes = 0;
+			questionShowArea.setText(info.getEnglishMeaning(lesson, position));
+			answer.setText("Please type here");
+			answer.selectAll();
+			positionText.setText(Integer.toString(position + 1));
+			nextButton.setEnabled(questionStatus [2] [0]);
+		});
+		buttonContainer.add(matchButton);
+		
+		this.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				user.load();
+				user.setLessonWordSpellStatus(lesson, questionStatus [0]);
+				user.setLessonWordFillInTheBlankStatus(lesson, questionStatus [1]);
+				user.setLessonWordMatchStatus(lesson, questionStatus [2]);
+				for(int i = 0; i < 12; i++)
+					if(merge(i))
+						user.setLessonWordTestStatus(lesson, i, true);
+				user.update();
+			};
+		});
+		
+		this.setVisible(true);
+	}
+	
+	private void countTestedNumber() {
+		for(int i = 0; i < 3; i++)
+			for(int j = 0; j < 12; j++)
+				if(questionStatus [i] [j])
+					testedNumber++;
+	}
+	
+	//check current model
+	private boolean check() {
+		for(boolean b : questionStatus [model])
+			if(!b)
+				return false;
+		return true;
+	}
+	
+	//check specific model
+	private boolean check(int model) {
+		for(boolean b : questionStatus [model])
+			if(!b)
+				return false;
+		return true;
+	}
+	
+	//check answer
+	private boolean checkAnswer(ArrayList <String> answers, String userAnswer) {
+		for(String s : answers) {
+			if(s.equals(userAnswer))
+				return true;
+		}
+		return false;
+	}
+	
+	private boolean merge(int position) {
+		for(int i = 0; i < 3; i++)
+			if(!questionStatus [i] [position])
+				return false;
+		return true;
+	}
+}

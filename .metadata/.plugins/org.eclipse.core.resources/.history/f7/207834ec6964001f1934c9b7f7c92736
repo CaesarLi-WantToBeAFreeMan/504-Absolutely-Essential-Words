@@ -1,0 +1,86 @@
+package windows;
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JRadioButton;
+import javax.swing.ImageIcon;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import data.User;
+
+public class SettingsWindow extends JFrame{
+	private static final long serialVersionUID = 1L;
+	private User user = new User();
+	SettingsWindow(User user, JFrame frame, Menus menu){
+		this.setSize(500, 400);
+		this.getContentPane().setBackground(Color.BLACK);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setTitle("Settings");
+		ImageIcon settingsIcon = new ImageIcon("icons/settings.png");
+		this.setIconImage(settingsIcon.getImage());
+		this.setLayout(null);
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
+		
+		//load the user data
+		user.load();
+		
+		//chinese meaning radio button
+		JRadioButton chineseMeaningRadioButton = new JRadioButton();
+		chineseMeaningRadioButton.setBackground(null);
+		chineseMeaningRadioButton.setBounds(50, 25, 350, 50);
+		chineseMeaningRadioButton.setFont(new Font("impact", Font.PLAIN, 39));
+		chineseMeaningRadioButton.setText("Chinese Meaning");
+		chineseMeaningRadioButton.setForeground(Color.CYAN);
+		chineseMeaningRadioButton.setFocusable(false);
+		chineseMeaningRadioButton.setSelected(user.getShowChineseMeaning());
+		this.add(chineseMeaningRadioButton);
+		
+		//example sentence radio button
+		JRadioButton exampleSentenceRadioButton = new JRadioButton();
+		exampleSentenceRadioButton.setBackground(null);
+		exampleSentenceRadioButton.setBounds(50, 100, 350, 50);
+		exampleSentenceRadioButton.setFont(new Font("impact", Font.PLAIN, 39));
+		exampleSentenceRadioButton.setText("Example Sentence");
+		exampleSentenceRadioButton.setForeground(Color.CYAN);
+		exampleSentenceRadioButton.setFocusable(false);
+		exampleSentenceRadioButton.setSelected(user.getShowExampleSentence());
+		this.add(exampleSentenceRadioButton);
+		
+		//reset button
+		JButton resetButton = new JButton("reset");
+		resetButton.setBackground(null);
+		resetButton.setBounds(175, 180, 150, 50);
+		resetButton.setFont(new Font("impact", Font.PLAIN, 39));
+		resetButton.setForeground(Color.CYAN);
+		resetButton.setFocusable(false);
+		resetButton.addActionListener(e -> {
+			chineseMeaningRadioButton.setSelected(true);
+			exampleSentenceRadioButton.setSelected(true);
+			user.setShowChineseMeaning(true);
+			user.setShowExampleSentence(true);
+			user.update();
+			this.dispose();
+		});
+		this.add(resetButton);
+		
+		//submit button
+		JButton submitButton = new JButton("submit");
+		submitButton.setBackground(null);
+		submitButton.setBounds(175, 270, 150, 50);
+		submitButton.setFont(new Font("impact", Font.PLAIN, 39));
+		submitButton.setForeground(Color.CYAN);
+		submitButton.setFocusable(false);
+		submitButton.addActionListener(e -> {
+		    user.setShowChineseMeaning(chineseMeaningRadioButton.isSelected());
+		    user.setShowExampleSentence(exampleSentenceRadioButton.isSelected());
+		    user.update();
+			this.dispose();
+		});
+		this.add(submitButton);
+		
+		this.setVisible(true);
+	}
+}

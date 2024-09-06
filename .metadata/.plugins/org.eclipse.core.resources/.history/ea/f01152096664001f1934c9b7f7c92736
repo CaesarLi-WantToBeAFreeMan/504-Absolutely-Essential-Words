@@ -1,0 +1,212 @@
+package data;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+public class User implements Serializable{
+	private static final long serialVersionUID = 12L;
+	private boolean showChineseMeaning,
+					showExampleSentence;
+	private boolean lessonWordLearnStatus [] [] = new boolean [42] [12],
+					lessonWordTestStatus [] [] = new boolean [42] [12],
+					lessonWordSpellStatus [] [] = new boolean [42] [12],
+					lessonWordFillInTheBlankStatus [] [] = new boolean [42] [12],
+					lessonWordMatchStatus [] [] = new boolean [42] [12];
+
+	public void load() {
+		try {
+			FileInputStream fileInputStream = new FileInputStream("data/user.ser");
+			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+			User resource = (User) objectInputStream.readObject();
+			this.copy(resource);
+			objectInputStream.close();
+			fileInputStream.close();
+		} catch (FileNotFoundException e) {
+			this.initialize();
+			File file = new File("data/user.ser");
+			file.getParentFile().mkdir();
+			try {
+				file.createNewFile();
+			} catch(IOException e1) {
+				e1.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void update() {
+		try {
+			FileOutputStream fileOutputStream = new FileOutputStream("data/user.ser");
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+			User resource = new User();
+			resource.copy(this);
+			objectOutputStream.writeObject(resource);
+			objectOutputStream.close();
+			fileOutputStream.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//setShowChineseMeaning method
+	public void setShowChineseMeaning(boolean b) {
+		this.showChineseMeaning = b;
+	}
+	
+	//getShowChineseMeaning method
+	public boolean getShowChineseMeaning() {
+		return this.showChineseMeaning;
+	}
+	
+	//setShowExampleSentence method
+	public void setShowExampleSentence(boolean b) {
+		this.showExampleSentence = b;
+	}
+	
+	//getShowExampleSentence method
+	public boolean getShowExampleSentence() {
+		return this.showExampleSentence;
+	}
+	
+	//setLessonWordLearnStatus methods
+	public void setLessonWordLearnStatus(int row, int column, boolean b) {
+		this.lessonWordLearnStatus [row] [column] = b;
+	}
+	
+	public void setLessonWordLearnStatus(int lesson, boolean [] array) {
+		this.lessonWordLearnStatus [lesson] = array.clone();
+	}
+	
+	//getLessonWordLearnStatus methods
+	public boolean [] getLessonWordLearnStatus(int lesson) {
+		return this.lessonWordLearnStatus [lesson];
+	}
+	
+	public boolean getLessonWordLearnStatus(int lesson, int position) {
+		return this.lessonWordLearnStatus [lesson] [position];
+	}
+	
+	//setLessonWordTestStatus methods
+	public void setLessonWordTestStatus(int row, int column, boolean b) {
+		this.lessonWordTestStatus [row] [column] = b;
+	}
+	
+	public void setLessonWordTestStatus(int lesson, boolean [] array) {
+		this.lessonWordTestStatus [lesson] = array.clone();
+	}
+	
+	//getLessonWordTestStatus methods
+	public boolean [] getLessonWordTestStatus(int lesson) {
+		return this.lessonWordTestStatus [lesson];
+	}
+	
+	public boolean getLessonWordTestStatus(int lesson, int position) {
+		return this.lessonWordTestStatus [lesson] [position];
+	}
+	
+	//setLessonWordSpellStatus methods
+	public void setLessonWordSpellStatus(int row, int column, boolean b) {
+		this.lessonWordSpellStatus [row] [column] = b;
+	}
+	
+	public void setLessonWordSpellStatus(int lesson, boolean [] array) {
+		this.lessonWordSpellStatus [lesson] = array.clone();
+	}
+	
+	//getLessonWordSpellStatus methods
+	public boolean [] getLessonWordSpellStatus(int lesson) {
+		return this.lessonWordSpellStatus [lesson];
+	}
+	
+	public boolean getLessonWordSpellStatus(int lesson, int position) {
+		return this.lessonWordSpellStatus [lesson] [position];
+	}
+	
+	//setLessonWordFillInTheBlankStatus methods
+	public void setLessonWordFillInTheBlankStatus(int row, int column, boolean b) {
+		this.lessonWordFillInTheBlankStatus [row] [column] = b;
+	}
+	
+	public void setLessonWordFillInTheBlankStatus(int lesson, boolean [] array) {
+		this.lessonWordFillInTheBlankStatus [lesson] = array.clone();
+	}
+	
+	//getLessonWordFillInTheBlankStatus methods
+	public boolean [] getLessonWordFillInTheBlankStatus(int lesson) {
+		return this.lessonWordFillInTheBlankStatus [lesson];
+	}
+	
+	public boolean getLessonWordFillInTheBlankStatus(int lesson, int position) {
+		return this.lessonWordFillInTheBlankStatus [lesson] [position];
+	}
+	
+	//setLessonWordMatchStatus methods
+	public void setLessonWordMatchStatus(int row, int column, boolean b) {
+		this.lessonWordMatchStatus [row] [column] = b;
+	}
+	
+	public void setLessonWordMatchStatus(int lesson, boolean [] array) {
+		this.lessonWordMatchStatus [lesson] = array.clone();
+	}
+	
+	//getLessonWordMatchStatus methods
+	public boolean [] getLessonWordMatchStatus(int lesson) {
+		return this.lessonWordMatchStatus [lesson];
+	}
+	
+	public boolean getLessonWordMatchStatus(int lesson, int position) {
+		return this.lessonWordMatchStatus [lesson] [position];
+	}
+	
+	//initialize method
+	public void initialize() {
+		this.showChineseMeaning = true;
+		this.showExampleSentence = true;
+		for(int i = 0; i < 42; i++) {
+			for(int j = 0; j < 12; j++) {
+				lessonWordLearnStatus [i] [j] = false;
+				lessonWordTestStatus [i] [j] = false;
+				lessonWordSpellStatus [i] [j] = false;
+				lessonWordFillInTheBlankStatus [i] [j] = false;
+				lessonWordMatchStatus [i] [j] = false;
+			}
+		}
+	}
+	
+	//copy all properties of user to this
+	public void copy(User user) {
+		this.setShowChineseMeaning(user.getShowChineseMeaning());
+		this.setShowExampleSentence(user.getShowExampleSentence());
+		this.lessonWordLearnStatus = Array2DCopy(user.lessonWordLearnStatus);
+		this.lessonWordTestStatus = Array2DCopy(user.lessonWordTestStatus);
+		
+		this.lessonWordSpellStatus = Array2DCopy(user.lessonWordSpellStatus);
+		this.lessonWordFillInTheBlankStatus = Array2DCopy(user.lessonWordFillInTheBlankStatus);
+		this.lessonWordMatchStatus = Array2DCopy(user.lessonWordMatchStatus);
+	}
+	
+	//copy 2D array method
+	private boolean [] [] Array2DCopy(boolean [] [] array) {
+		boolean [] [] copy = new boolean [array.length] [];
+		for(int i = 0; i < array.length; i++)
+			copy [i] = array [i].clone();
+		return copy;
+	}
+	
+	//reset data method
+	public void resetData() {
+		this.initialize();
+		this.update();
+	}
+}

@@ -1,0 +1,418 @@
+!SESSION 2024-08-27 18:25:30.728 -----------------------------------------------
+eclipse.buildId=4.32.0.20240606-1231
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_TW
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-08-27 18:25:32.593
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-08-27 18:26:12.197
+!MESSAGE Logback config file: D:\ProgramData\Eclipse\504-Absolutely Essential Words\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-08-27 18:26:16.227
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Administrator'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2024-08-27 20:38:39.327 -----------------------------------------------
+eclipse.buildId=4.32.0.20240606-1231
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_TW
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-08-27 20:38:40.679
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-08-27 20:38:43.812
+!MESSAGE Logback config file: D:\ProgramData\Eclipse\504-Absolutely Essential Words\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-08-27 20:38:47.603
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Administrator'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:03.007
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:03.007
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:03.007
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:03.007
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:03.008
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:03.008
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:03.008
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:03.008
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.equinox.security 1 0 2024-08-27 21:04:08.814
+!MESSAGE New keyring password generated. 
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:09.484
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:09.484
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:09.484
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:09.484
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:09.485
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:09.485
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:09.485
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-27 21:04:09.485
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2024-08-27 21:30:04.858
+!MESSAGE close() called when useCnt is already zero for Repository[D:\ProgramData\Eclipse\504-Absolutely Essential Words\AbsolutelyEssentialWords\.git]
+!SESSION 2024-08-28 18:28:36.143 -----------------------------------------------
+eclipse.buildId=4.32.0.20240606-1231
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_TW
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-08-28 18:28:38.018
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-08-28 18:28:42.959
+!MESSAGE Logback config file: D:\ProgramData\Eclipse\504-Absolutely Essential Words\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-08-28 18:28:47.502
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Administrator'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:34:02.596
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:34:02.596
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:34:02.597
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:34:02.597
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:34:02.597
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:34:02.598
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:34:02.598
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:34:02.598
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:36:53.334
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:36:53.336
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:36:53.337
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:36:53.337
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:36:53.337
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:36:53.337
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:36:53.338
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:36:53.338
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:13.509
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:13.511
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:13.512
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:13.513
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:13.513
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:13.514
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:13.514
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:13.514
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:57.304
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:57.305
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:57.305
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:57.306
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:57.306
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:57.307
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:57.307
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:39:57.308
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:32.880
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:32.881
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:32.881
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:32.882
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:32.882
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:32.883
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:32.883
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:32.884
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:38.709
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:38.709
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:38.710
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:38.711
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:38.711
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:38.712
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:38.712
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:40:38.713
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:46:39.247
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:46:39.248
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:46:39.250
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:46:39.251
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:46:39.252
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:46:39.254
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:46:39.255
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:46:39.256
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:48:33.119
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:48:33.119
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:48:33.119
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:48:33.120
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:48:33.120
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:48:33.120
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:48:33.120
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:48:33.121
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:49:51.239
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:49:51.239
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:49:51.239
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:49:51.239
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:49:51.239
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:49:51.240
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:49:51.240
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:49:51.240
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:51:09.055
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:51:09.056
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:51:09.056
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:51:09.056
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:51:09.056
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:51:09.057
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:51:09.057
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:51:09.057
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:52:01.262
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:52:01.264
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:52:01.265
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:52:01.266
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:52:01.266
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:52:01.267
+!MESSAGE System property http.proxyPort is set to 7890 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:52:01.267
+!MESSAGE System property https.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2024-08-28 18:52:01.267
+!MESSAGE System property https.proxyPort is set to 7890 but should not be set.
+!SESSION 2024-08-30 20:04:06.256 -----------------------------------------------
+eclipse.buildId=4.32.0.20240606-1231
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_TW
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-08-30 20:04:08.207
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-08-30 20:04:12.197
+!MESSAGE Logback config file: D:\ProgramData\Eclipse\504-Absolutely Essential Words\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-08-30 20:04:15.006
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Administrator'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2024-09-06 16:36:29.552 -----------------------------------------------
+eclipse.buildId=4.32.0.20240606-1231
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_TW
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-09-06 16:36:31.097
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-09-06 16:36:35.409
+!MESSAGE Logback config file: D:\ProgramData\Eclipse\504-Absolutely Essential Words\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-09-06 16:36:40.162
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Administrator'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.

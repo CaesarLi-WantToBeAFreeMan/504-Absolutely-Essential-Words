@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ImportExportAction">
+		<item key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID" value="org.eclipse.jdt.internal.ui.fatjarpackager.JarPackageWizard"/>
+		<list key="ImportExportPage.STORE_EXPANDED_EXPORT_CATEGORIES">
+			<item value="org.eclipse.jdt.ui.Java"/>
+		</list>
+		<section name="ImportExportWizard.dialogBounds">
+			<item key="DIALOG_X_ORIGIN" value="1429"/>
+			<item key="DIALOG_Y_ORIGIN" value="391"/>
+			<item key="DIALOG_WIDTH" value="599"/>
+			<item key="DIALOG_HEIGHT" value="550"/>
+			<item key="DIALOG_FONT_NAME" value="1|Microsoft JhengHei UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft JhengHei UI"/>
+		</section>
+	</section>
+	<section name="PropertyDialog.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1389"/>
+		<item key="DIALOG_Y_ORIGIN" value="358"/>
+		<item key="DIALOG_WIDTH" value="678"/>
+		<item key="DIALOG_HEIGHT" value="556"/>
+		<item key="DIALOG_FONT_NAME" value="1|Microsoft JhengHei UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft JhengHei UI"/>
+	</section>
+	<section name="NewWizardAction">
+		<section name="NewWizard.dialogBounds">
+			<item key="DIALOG_X_ORIGIN" value="1466"/>
+			<item key="DIALOG_Y_ORIGIN" value="426"/>
+			<item key="DIALOG_WIDTH" value="525"/>
+			<item key="DIALOG_HEIGHT" value="500"/>
+			<item key="DIALOG_FONT_NAME" value="1|Microsoft JhengHei UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft JhengHei UI"/>
+		</section>
+	</section>
+	<section name="InstallationDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="409"/>
+		<item key="DIALOG_Y_ORIGIN" value="138"/>
+		<item key="DIALOG_WIDTH" value="700"/>
+		<item key="DIALOG_HEIGHT" value="738"/>
+		<item key="DIALOG_FONT_NAME" value="1|Microsoft JhengHei UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft JhengHei UI"/>
+	</section>
+	<section name="WorkbenchPreferenceDialog.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="551"/>
+		<item key="DIALOG_Y_ORIGIN" value="358"/>
+		<item key="DIALOG_WIDTH" value="1075"/>
+		<item key="DIALOG_HEIGHT" value="556"/>
+		<item key="DIALOG_FONT_NAME" value="1|Microsoft JhengHei UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft JhengHei UI"/>
+	</section>
+</section>
