@@ -20,7 +20,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import data.User;
-import data.WordInfo;
+import data.DatabaseConnector;
 
 public class LessonsWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -31,6 +31,7 @@ public class LessonsWindow extends JFrame{
 	private JPanel lessonContainer = new JPanel();
 	private int page = 0;
 	private User user = new User();
+	private DatabaseConnector dbc = new DatabaseConnector();
 	
 	LessonsWindow(){
 		this.setSize(1250, 750);
@@ -179,6 +180,9 @@ public class LessonsWindow extends JFrame{
 		this.add(tipContainer, BorderLayout.SOUTH);
 		this.add(lessonContainer, BorderLayout.CENTER);
 		this.setVisible(true);
+		
+		//don't disconnect the connection
+		//dbc.close();
 	}
 	
 	private void fullLesson(JPanel container, int lesson) {
@@ -224,11 +228,9 @@ public class LessonsWindow extends JFrame{
 		lessonWordContainer.setBackground(new Color(34, 139, 34));
 		lessonContentContainer.add(lessonWordContainer);
 		
-		WordInfo info = new WordInfo();
-		
 		//full all words
 		for(int i = 0; i < 12; i++) {
-			JLabel word = new JLabel(info.getWord(lesson, i));
+			JLabel word = new JLabel(dbc.getWord(lesson, i));
 			word.setForeground(Color.WHITE);
 			word.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 15));
 			word.setHorizontalAlignment(JLabel.CENTER);

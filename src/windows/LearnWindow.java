@@ -17,11 +17,11 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import data.User;
-import data.WordInfo;
+import data.DatabaseConnector;
 
 public class LearnWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
-	private WordInfo info = new WordInfo();
+	private DatabaseConnector dbc = new DatabaseConnector();
 	private JPanel showArea = new JPanel();
 	private JButton basicButton = new JButton("basic"),
 					meaningButton = new JButton("meaning"),
@@ -230,13 +230,13 @@ public class LearnWindow extends JFrame{
 		showArea.add(basicContainer);
 		
 		//word label
-		JLabel wordLabel = new JLabel(info.getWord(lesson, position));
+		JLabel wordLabel = new JLabel(dbc.getWord(lesson, position));
 		wordLabel.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 90));
 		wordLabel.setHorizontalAlignment(JLabel.CENTER);
 		basicContainer.add(wordLabel, BorderLayout.NORTH);
 		
 		//phonetic symbol label
-		JLabel phoneticSymbolLabel = new JLabel(info.getPhoneticSymbol(lesson, position));
+		JLabel phoneticSymbolLabel = new JLabel(dbc.getPhoneticSymbol(lesson, position));
 		phoneticSymbolLabel.setFont(new Font("Arial", Font.BOLD, 80));
 		phoneticSymbolLabel.setHorizontalAlignment(JLabel.CENTER);
 		basicContainer.add(phoneticSymbolLabel, BorderLayout.SOUTH);
@@ -258,7 +258,7 @@ public class LearnWindow extends JFrame{
 		
 		//english meaning text area
 		JTextArea englishMeaningArea = new JTextArea(5, 20);
-		englishMeaningArea.setText(info.getEnglishMeaning(lesson, position));
+		englishMeaningArea.setText(dbc.getEnglishMeaning(lesson, position));
 		englishMeaningArea.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 39));
 		englishMeaningArea.setFocusable(false);
 		englishMeaningArea.setOpaque(false);
@@ -269,7 +269,7 @@ public class LearnWindow extends JFrame{
 		
 		//chinese meaning label
 		if(user.getShowChineseMeaning()) {
-			JLabel chineseMeaningLabel = new JLabel(info.getChineseMeaning(lesson, position));
+			JLabel chineseMeaningLabel = new JLabel(dbc.getChineseMeaning(lesson, position));
 			chineseMeaningLabel.setFont(new Font("DFKai-SB", Font.BOLD, 39));
 			meaningContainer.add(chineseMeaningLabel, BorderLayout.SOUTH);
 		}
@@ -293,7 +293,9 @@ public class LearnWindow extends JFrame{
 		JTextArea exampleSentenceArea [] = new JTextArea [3];
 		for(int i = 0; i < 3; i++) {
 			exampleSentenceArea [i] = new JTextArea(3, 30); 
-			exampleSentenceArea [i].setText(info.getExampleSentence(lesson, position, i));
+			exampleSentenceArea [i].setText(i == 0 	? dbc.getSentenceA(lesson, position)
+													: i == 1 ? dbc.getSentenceB(lesson, position)
+													: dbc.getSentenceC(lesson, position));
 			exampleSentenceArea [i].setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 27));
 			exampleSentenceArea [i].setFocusable(false);
 			exampleSentenceArea [i].setOpaque(false);
@@ -345,7 +347,10 @@ public class LearnWindow extends JFrame{
 		//form text
 		JLabel formText = new JLabel();
 		formText.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 32));
-		String originalString = info.getWordFamily(lesson, position, type);
+		String originalString = type == 0	? dbc.getNoun(lesson, position)
+											: type == 1 ? dbc.getVerb(lesson, position)
+											: type == 2 ? dbc.getAdjective(lesson, position)
+											: dbc.getAdverb(lesson, position);
 		if(originalString.contains(".")) {
 			int startPosition = originalString.indexOf(".");
 			String text = 	"<html><span style = 'color:black;'>" + originalString.substring(0, startPosition) + "</span><span style = 'color:gray;'>"

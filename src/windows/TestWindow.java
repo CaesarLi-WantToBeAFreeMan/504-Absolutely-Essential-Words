@@ -21,14 +21,12 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import data.User;
-import data.WordInfo;
-import data.QuestionsNAnswers;
+import data.DatabaseConnector;
 
 public class TestWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
-	private WordInfo info = new WordInfo();
 	private User user = new User();
-	private QuestionsNAnswers qNA = new QuestionsNAnswers();
+	private DatabaseConnector dbc = new DatabaseConnector();
 	
 	private JPanel showArea = new JPanel();
 	private int position = 0, model = 0, tryTimes = 0, testedNumber = 0;
@@ -114,7 +112,7 @@ public class TestWindow extends JFrame{
 		questionShowArea.setOpaque(false);
 		questionShowArea.setForeground(new Color(5, 149, 245));
 		questionShowArea.setFont(new Font("Arial", Font.BOLD, 50));
-		questionShowArea.setText(info.getPhoneticSymbol(lesson, position));
+		questionShowArea.setText(dbc.getPhoneticSymbol(lesson, position));
 		questionShowArea.setLineWrap(true);
 		questionShowArea.setWrapStyleWord(true);
 		questionShowArea.setEditable(false);
@@ -148,7 +146,7 @@ public class TestWindow extends JFrame{
 		answerArea.add(checkButton);
 		checkButton.addActionListener(e -> {
 			if(model == 0) {
-				if(answer.getText().equals(info.getWord(lesson, position))) {
+				if(answer.getText().equals(dbc.getWord(lesson, position))) {
 					if(!questionStatus [model] [position])
 						progressBar.setValue(++testedNumber);
 					
@@ -163,13 +161,13 @@ public class TestWindow extends JFrame{
 						JOptionPane.showMessageDialog(	this, "Your answer is wrong!!!\nPlease try again",
 														"WRONG ANSWER!!!", JOptionPane.ERROR_MESSAGE);
 					else
-						JOptionPane.showMessageDialog(	this, "You have tried more than three times and failed!\nThe correct answer is " + info.getWord(lesson, position) + "\nAnd please try again!",
+						JOptionPane.showMessageDialog(	this, "You have tried more than three times and failed!\nThe correct answer is " + dbc.getWord(lesson, position) + "\nAnd please try again!",
 														"MORE THAN THREE WRONG ANSWERS!!!", JOptionPane.WARNING_MESSAGE);
 					answer.setText("Try Again");
 					tryTimes++;
 				}
 			} else if(model == 1) {
-				String originalAnswer = qNA.getAnswer(lesson, position), userAnswer = answer.getText();
+				String originalAnswer = dbc.getAnswer(lesson, position), userAnswer = answer.getText();
 				ArrayList <String> answers = new ArrayList <String>();
 				if(originalAnswer.contains("||")) {
 					int startPosition = 0;
@@ -194,13 +192,13 @@ public class TestWindow extends JFrame{
 						JOptionPane.showMessageDialog(	this, "Your answer is wrong!!!\nPlease try again",
 														"WRONG ANSWER!!!", JOptionPane.ERROR_MESSAGE);
 					else
-						JOptionPane.showMessageDialog(	this, "You have tried more than three times and failed!\nThe correct answer is " + qNA.getAnswer(lesson, position) + "\nAnd please try again!",
+						JOptionPane.showMessageDialog(	this, "You have tried more than three times and failed!\nThe correct answer is " + dbc.getAnswer(lesson, position) + "\nAnd please try again!",
 														"MORE THAN THREE WRONG ANSWERS!!!", JOptionPane.WARNING_MESSAGE);
 					answer.setText("Try Again");
 					tryTimes++;
 				}
 			} else {
-				if(answer.getText().equals(info.getWord(lesson, position))) {
+				if(answer.getText().equals(dbc.getWord(lesson, position))) {
 					if(!questionStatus [model] [position])
 						progressBar.setValue(++testedNumber);
 					
@@ -214,7 +212,7 @@ public class TestWindow extends JFrame{
 						JOptionPane.showMessageDialog(	this, "Your answer is wrong!!!\nPlease try again",
 														"WRONG ANSWER!!!", JOptionPane.ERROR_MESSAGE);
 					else
-						JOptionPane.showMessageDialog(	this, "You have tried more than three times and failed!\nThe correct answer is " + info.getWord(lesson, position) + "\nAnd please try again!",
+						JOptionPane.showMessageDialog(	this, "You have tried more than three times and failed!\nThe correct answer is " + dbc.getWord(lesson, position) + "\nAnd please try again!",
 														"MORE THAN THREE WRONG ANSWERS!!!", JOptionPane.WARNING_MESSAGE);
 					answer.setText("Try Again");
 					tryTimes++;
@@ -245,8 +243,9 @@ public class TestWindow extends JFrame{
 			position = (position + 1) % 12;
 			nextButton.setEnabled(questionStatus [model] [position] ? true : false);
 			positionText.setText(Integer.toString(position + 1));
-			questionShowArea.setText(	model == 0 ? info.getPhoneticSymbol(lesson, position) : 
-										model == 1 ? qNA.getQuestion(lesson, position) : info.getEnglishMeaning(lesson, position));
+			questionShowArea.setText(	model == 0	? dbc.getPhoneticSymbol(lesson, position) : 
+										model == 1 	? dbc.getQuestion(lesson, position)
+													: dbc.getEnglishMeaning(lesson, position));
 			answer.setText("Please type here");
 			answer.selectAll();
 		});
@@ -287,7 +286,7 @@ public class TestWindow extends JFrame{
 			model = 0;
 			position = 0;
 			tryTimes = 0;
-			questionShowArea.setText(info.getPhoneticSymbol(lesson, position));
+			questionShowArea.setText(dbc.getPhoneticSymbol(lesson, position));
 			answer.setText("Please type here");
 			answer.selectAll();
 			positionText.setText(Integer.toString(position + 1));
@@ -309,7 +308,7 @@ public class TestWindow extends JFrame{
 			model = 1;
 			position = 0;
 			tryTimes = 0;
-			questionShowArea.setText(qNA.getQuestion(lesson, position));
+			questionShowArea.setText(dbc.getQuestion(lesson, position));
 			answer.setText("Please type here");
 			answer.selectAll();
 			positionText.setText(Integer.toString(position + 1));
@@ -331,7 +330,7 @@ public class TestWindow extends JFrame{
 			model = 2;
 			position = 0;
 			tryTimes = 0;
-			questionShowArea.setText(info.getEnglishMeaning(lesson, position));
+			questionShowArea.setText(dbc.getEnglishMeaning(lesson, position));
 			answer.setText("Please type here");
 			answer.selectAll();
 			positionText.setText(Integer.toString(position + 1));

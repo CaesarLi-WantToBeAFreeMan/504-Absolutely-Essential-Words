@@ -13,12 +13,12 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import data.User;
-import data.WordInfo;
+import data.DatabaseConnector;
 
 public class ViewTestedWordsWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private User user = new User();
-	private WordInfo info = new WordInfo();
+	private DatabaseConnector dbc = new DatabaseConnector();
 	
 	ViewTestedWordsWindow(){
 		this.setSize(500, 500);
@@ -55,7 +55,7 @@ public class ViewTestedWordsWindow extends JFrame{
 			
 			//red representatives haven't learned yet, and green representatives learned
 			for(int j = 0; j < 12; j++) {
-				JLabel word = new JLabel(info.getWord(i, j));
+				JLabel word = new JLabel(dbc.getWord(i, j));
 				word.setFont(new Font("Arial", Font.PLAIN, 15));
 				word.setForeground(user.getLessonWordTestStatus(i, j) ? Color.green : Color.RED);
 				testStatusContainer.add(word);
